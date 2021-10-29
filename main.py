@@ -91,7 +91,7 @@ class Bullet:
     def check_border(self, border):
         # Checks to see if the bullet's position is over the boundary
 
-        if self.bullet_pos.y + self.BULLET_SIZE.y <= border:
+        if self.bullet_pos.y + self.BULLET_SIZE.y <= 0 or self.bullet_pos.y >= border:
             return True
         else:
             return False
@@ -263,7 +263,7 @@ class Game:
         for bullet in self.bullets:  # Rendering bullets
             bullet.draw(self.display)
 
-            if bullet.check_border(0):
+            if bullet.check_border(self.WINDOW_SIZE[1]):
                 self.bullets.remove(bullet)
 
 
